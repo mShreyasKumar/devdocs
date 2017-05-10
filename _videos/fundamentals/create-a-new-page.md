@@ -56,6 +56,7 @@ Learning/HelloPage/etc/module.xml
 \Magento\Framework\Component\ComponentRegistrar::register( \Magento\Framework\Component\ComponentRegistrar::MODULE, 'Learning_HelloPage',
 __DIR__
 );
+?>
 {% endhighlight %}
 
 #### module.xml
@@ -146,6 +147,7 @@ class View extends \Magento\Framework\App\Action\Action
 
 return $result->setData($data);
 } }
+?>
 {% endhighlight %}
 
 Note we created a JSON-type page. This can be seen in the results factory that we specify in our constructor. In order to activate our module and our page we should run the Magento setup upgrade:
