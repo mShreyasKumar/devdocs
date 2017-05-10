@@ -54,6 +54,7 @@ Now create two files:
 
 {% collapsible Show code %}
 {% highlight php startinline=true %}
+<?php
 /**
 * Copyright © 2016 Magento. All rights reserved.
 * See COPYING.txt for license details.
@@ -63,7 +64,7 @@ Now create two files:
   \Magento\Framework\Component\ComponentRegistrar::MODULE,
   'Learning_GreetingMessage',
   __DIR__
-);
+); ?>
 {% endhighlight %}
 {% endcollapsible %}
 
@@ -100,6 +101,7 @@ Now create the file `Setup/InstallSchema.php`
 
 {% collapsible Show code %}
 {% highlight php startinline=true %}
+<?php
 /**
 * Copyright © 2016 Magento. All rights reserved.
 * See COPYING.txt for license details.
@@ -142,7 +144,7 @@ class InstallSchema implements InstallSchemaInterface
               )->setComment("Greeting Message table");
           $setup->getConnection()->createTable($table);
       }
-}
+} ?>
 {% endhighlight %}
 {% endcollapsible %}
 
@@ -163,6 +165,7 @@ Now let’s create the `Setup/InstallData.php` file:
 
 {% collapsible Show code %}
 {% highlight php startinline=true %}
+<?php
 /**
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
@@ -201,7 +204,7 @@ class InstallData implements InstallDataInterface
           }
     }
 }
-
+?>
 {% endhighlight %}
 {% endcollapsible %}
 
@@ -274,7 +277,7 @@ Then create the file `Setup/UpgradeSchema.php`:
 
 {% collapsible Show code %}
 {% highlight php startinline=true %}
-
+<?php
 /**
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
@@ -313,6 +316,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
         $setup->endSetup();
     }
 }
+?>
 {% endhighlight %}
 {% endcollapsible %}
 
@@ -327,6 +331,7 @@ Now we’ll create the file `Setup/UpgradeData.php`:
 
 {% collapsible Show code %}
 {% highlight php startinline=true %}
+<?php
 /**
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
@@ -356,7 +361,7 @@ class UpgradeData implements UpgradeDataInterface
         ) {
             $table = $setup->getTable('greeting_message');
             $setup->getConnection()
-                ->insertForce($table, ['message' => 'Happy Thanksgiving, 'season' => 'fall']);
+                ->insertForce($table, ['message' => 'Happy Thanksgiving', 'season' => 'fall']);
 
             $setup->getConnection()
                 ->update($table, ['season' => 'winter'], 'greeting_id IN (1,2)');
@@ -364,6 +369,7 @@ class UpgradeData implements UpgradeDataInterface
         $setup->endSetup();
     }
 }
+?>
 {% endhighlight %}
 {% endcollapsible %}
 
